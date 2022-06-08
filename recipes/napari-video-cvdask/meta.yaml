@@ -1,0 +1,44 @@
+{% set name = "napari-video-cvdask" %}
+{% set version = "0.2.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-video-cvdask-{{ version }}.tar.gz
+  sha256: e7670bb033a060f50de150828c7db308e312d962efdcbca1dfa690c8ae6a56aa
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python >=3.7
+  run:
+    - av
+    - dask-image
+    - python >=3.7
+
+test:
+  imports:
+    - napari_video_cvdask
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/nickdelgrosso/napari-video-cvdask
+  summary: A Video File Reader that uses OpenCV2 and Dask Arrays
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - napari
+    - nickdelgrosso
