@@ -1,0 +1,57 @@
+{% set name = "napari-stress" %}
+{% set version = "0.0.14" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-stress-{{ version }}.tar.gz
+  sha256: 2444dc6d7d1e5532418592351f0533a2a4101753d6eeaa55cc1013d8b9e1e4d3
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python >=3.7
+  run:
+    - aicsimageio
+    - matplotlib-base
+    - mpmath
+    - napari <=0.4.15
+    - napari-process-points-and-surfaces >=0.2.0
+    - napari-segment-blobs-and-things-with-membranes
+    - napari-tools-menu >=0.1.15
+    - numpy
+    - pandas
+    - pyshtools
+    - python >=3.7
+    - scikit-image
+    - scipy
+    - tqdm
+    - vedo
+    - vispy <=0.9.6
+
+test:
+  imports:
+    - napari_stress
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/napari-stress/
+  summary: Interactive surface analysis in napari for measuring mechanical stresses in biological tissues
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
