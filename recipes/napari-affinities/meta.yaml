@@ -1,0 +1,51 @@
+{% set name = "napari-affinities" %}
+{% set version = "0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-affinities-{{ version }}.tar.gz
+  sha256: 5ddcdb8c5dc836e04d0a74d6243082bb93ffc90c16d04351b1dc5754dfa0d892
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python >=3.7
+    - setuptools-scm
+  run:
+    - affogato
+    - bioimageio.core
+    - gunpowder
+    - lsd
+    - magicgui
+    - matplotlib-base
+    - numpy
+    - python >=3.7
+    - zarr
+
+test:
+  imports:
+    - napari_affinities
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/pattonw/napari-affinities
+  summary: A plugin for creating, visualizing, and processing affinities
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
