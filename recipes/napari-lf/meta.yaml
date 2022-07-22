@@ -22,7 +22,7 @@ requirements:
     - h5py
     - napari
     - numpy
-    - opencv-contrib-python
+    - opencv
     - pyopencl
     - python >=3.7
 
