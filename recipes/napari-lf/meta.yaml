@@ -33,6 +33,7 @@ test:
     - pip list
     - pip check
   requires:
+    - oclgrind
     - pip
 
 about:
