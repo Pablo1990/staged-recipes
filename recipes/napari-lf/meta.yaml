@@ -1,0 +1,47 @@
+{% set name = "napari-lf" %}
+{% set version = "0.0.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-LF-{{ version }}.tar.gz
+  sha256: bf9a4185921926c40f48acfa44102a32cdf03747ab9ffa6506aad0dc51784d63
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python >=3.7
+  run:
+    - h5py
+    - napari
+    - numpy
+    - opencv-contrib-python
+    - pyopencl
+    - python >=3.7
+
+test:
+  imports:
+    - napari_lf
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/PolarizedLightFieldMicroscopy/napari-LF
+  summary: Light field imaging plugin for napari
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
