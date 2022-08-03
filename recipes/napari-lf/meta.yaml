@@ -28,7 +28,9 @@ requirements:
 
 test:
   imports:
-    - napari_lf
+    - napari_lf._widgetLF_gui
+    - napari_lf._widgetLF
+    - napari_lf._widgetLF_vals
   commands:
     - pip list
     - pip check
