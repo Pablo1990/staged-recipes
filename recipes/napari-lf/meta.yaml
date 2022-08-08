@@ -27,8 +27,8 @@ requirements:
     - python >=3.7
 
 test:
-  imports:
-    - napari_lf
+  # imports:
+  #   - napari_lf
   commands:
     - pip list
     - pip check
