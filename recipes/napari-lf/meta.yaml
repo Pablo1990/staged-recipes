@@ -28,10 +28,10 @@ requirements:
 
 test:
   # imports:
-  #   - napari_lf
+  #   - napari_lf  # The import is running napari
   commands:
     - pip list
-    - pip check
+    # - pip check
   requires:
     - oclgrind
     - pip
