@@ -13,6 +13,10 @@ build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
+  entry_points:
+    - lfdeconvolve = napari_lf.lfa.lfdeconvolve:main
+    - lfcalibrate = napari_lf.lfa.lfcalibrate:main
+    - lfrectify = napari_lf.lfa.lfrectify:main
 
 requirements:
   host:
@@ -27,11 +31,14 @@ requirements:
     - python >=3.7
 
 test:
-  # imports:
-  #   - napari_lf  # The import is running napari
+  # imports:
+    # - napari_lf  # The import is running napari
   commands:
     - pip list
     # - pip check
+    - lfdeconvolve --help
+    - lfcalibrate --help
+    - lfrectify --help
   requires:
     - oclgrind
     - pip
