@@ -1,0 +1,45 @@
+{% set name = "napari-calibration" %}
+{% set version = "0.0.4" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-calibration-{{ version }}.tar.gz
+  sha256: 581ab75821969c9fcba5f739510cc112549ce6ec6c000693116008acdaddafb7
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python >=3.7
+  run:
+    - numpy
+    - opencv
+    - python >=3.7
+    - qt-material
+
+test:
+  imports:
+    - napari_calibration
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/tcotte/napari-calibration
+  summary: Plug in which enables to make camera calibration
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
