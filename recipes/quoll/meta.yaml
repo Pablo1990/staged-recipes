@@ -1,0 +1,52 @@
+{% set name = "quoll" %}
+{% set version = "0.0.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/quoll-{{ version }}.tar.gz
+  sha256: 7ec2f5a0301e3071af5b478129ab906162299728f6b99d4a613368b5813437fe
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python >=3.6
+  run:
+    - jpype1 ==0.7.5
+    - matplotlib-base
+    - miplib
+    - mrcfile
+    - notebook
+    - numpy
+    - pandas
+    - pims ==0.4.1
+    - python >=3.6
+    - scikit-image
+    - scipy
+    - tifffile >2021
+
+test:
+  imports:
+    - quoll
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/quoll/
+  summary: Image quality assessment for electron tomography
+  license: Apache-2.0
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
