@@ -1,0 +1,47 @@
+{% set name = "napari-merge-stardist-masks" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-merge-stardist-masks-{{ version }}.tar.gz
+  sha256: 17b22f00ac5388de8e214f4e9fb3641c352b23b824190ed9f242955ab975a309
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python >=3.8
+  run:
+    - magicgui
+    - merge-stardist-masks >=0.1.0
+    - numpy
+    - python >=3.8
+    - qtpy
+    - stardist-napari >=2022.7.5
+
+test:
+  imports:
+    - napari_merge_stardist_masks
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/gatoniel/napari-merge-stardist-masks
+  summary: Segment non-star-convex objects with StarDist by merging masks.
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
