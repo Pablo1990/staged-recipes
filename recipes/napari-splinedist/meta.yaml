@@ -1,0 +1,52 @@
+{% set name = "napari-splinedist" %}
+{% set version = "0.2.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-splinedist-{{ version }}.tar.gz
+  sha256: 577dda2d9e097d05441179e324933c48e0ed444202489d484b38c4cb0fd8ba81
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+  run:
+    - python >=3.8
+    - pydantic
+    - numpy
+    - magicgui
+    - qtpy
+    - stardist >=0.8.3
+    - splinedist >=0.1.2
+    - napari-splineit >=0.2.1
+    - requests
+    - tensorflow
+    - opencv-python-headless
+
+test:
+  imports:
+    - napari_splinedist
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/DerThorsten/napari-splinedist
+  summary: A napari SplineDist plugin
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
