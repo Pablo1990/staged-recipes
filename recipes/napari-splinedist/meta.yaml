@@ -16,20 +16,20 @@ build:
 
 requirements:
   host:
-    - python >=3.8
     - pip
-  run:
     - python >=3.8
-    - pydantic
-    - numpy
+  run:
     - magicgui
-    - qtpy
-    - stardist >=0.8.3
-    - splinedist >=0.1.2
     - napari-splineit >=0.2.1
+    - numpy
+    - opencv
+    - pydantic
+    - python >=3.8
+    - qtpy
     - requests
+    - splinedist >=0.1.2
+    - stardist >=0.8.3
     - tensorflow
-    - opencv-python-headless
 
 test:
   imports:
