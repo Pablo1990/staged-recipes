@@ -1,0 +1,55 @@
+{% set name = "napari-denoiseg" %}
+{% set version = "0.0.1rc2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-denoiseg-{{ version }}.tar.gz
+  sha256: e244dbb820ee7d35212ee198d28eabf987439a70ce6695cbf63cfa52baab1ea8
+
+build:
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+    - numpy
+    - pyqtgraph
+    - denoiseg >=0.3.0
+    - bioimageio.core
+    - magicgui
+    - qtpy
+    - napari-time-slicer >=0.4.9
+    - napari <=0.4.15
+    - vispy <=0.9.6
+    - imageio !=2.11.0,!=2.22.1,>=2.5.0
+    - tensorflow  # [not osx]
+    - tensorflow-macos  # [osx]
+    - tensorflow-metal  # [osx]
+
+test:
+  imports:
+    - napari_denoiseg
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/juglab/napari_denoiseg
+  summary: A napari plugin performing joint denoising and segmentation of microscopy images using DenoiSeg.
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
