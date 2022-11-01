@@ -1,0 +1,45 @@
+{% set name = "napari-umap" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-umap-{{ version }}.tar.gz
+  sha256: 72f972c8b543903f7862257d3b152a98a8d68f7d073d1b41a44c5a08b90c56a6
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+  run:
+    - python >=3.8
+    - numpy
+    - magicgui
+    - qtpy
+
+test:
+  imports:
+    - napari_umap
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/royerlab/napari-umap
+  summary: A simple plugin to use with napari
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
