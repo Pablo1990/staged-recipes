@@ -1,0 +1,45 @@
+{% set name = "napari-bud-cell-segmenter" %}
+{% set version = "0.1.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-bud-cell-segmenter-{{ version }}.tar.gz
+  sha256: 227cd5604e2626bdee51018efd38888c5c425b46c6dd3c4ced8f2ed178f8aeac
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+  run:
+    - python >=3.8
+    - numpy
+    - magicgui
+    - qtpy
+
+test:
+  imports:
+    - napari_bud_cell_segmenter
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/AurelienMaillot/napari-bud-cell-segmenter
+  summary: A plugin to segment embryonic mammary bud cells and detect 2 RNA probes
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
