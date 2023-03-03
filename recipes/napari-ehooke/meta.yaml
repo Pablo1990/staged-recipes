@@ -1,0 +1,46 @@
+{% set name = "napari-ehooke" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-ehooke-{{ version }}.tar.gz
+  sha256: 350ce0e26341f1cda7bfa1d22c8b938a2ea3b174a516760d87a75ff2f15b3372
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+  run:
+    - python >=3.8
+    - numpy
+    - magicgui
+    - qtpy
+    - napari
+
+test:
+  imports:
+    - napari_ehooke
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/antmsbrito/napari-ehooke
+  summary: eHooke implementation within napari
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
