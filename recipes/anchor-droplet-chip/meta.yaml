@@ -1,0 +1,60 @@
+{% set name = "anchor-droplet-chip" %}
+{% set version = "0.2.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/anchor_droplet_chip-{{ version }}.tar.gz
+  sha256: cc9ca8add92b482f5721bff9c8bca838f913e6bfe63bbab32defa10586154c2c
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+  run:
+    - python >=3.8
+    - dask-core
+    - fire
+    - imreg_dft
+    - jupyterlab
+    - matplotlib-base
+    - napari
+    - nd2
+    - numpy
+    - pandas
+    - pyqt6
+    - pyyaml
+    - scikit-image
+    - scipy
+    - seaborn
+    - tifffile
+    - zarr-tools
+    - zenodo_get
+
+test:
+  imports:
+    - adc
+    - imreg_dft
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/aaristov/napari-segment
+  summary: Segment organoids and measure intensities
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
