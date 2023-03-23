@@ -1,0 +1,50 @@
+{% set name = "napari-tomodl" %}
+{% set version = "0.0.9" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-tomodl-{{ version }}.tar.gz
+  sha256: d14fbbd0eef28236770ef0241f9ac7de8d5203b1d054ef8056f6a0a833c7f187
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python <3.9
+    - pip
+  run:
+    - python <3.9
+    - magicgui
+    - qtpy
+    - napari
+    - pyqt
+    - phantominator
+    - monai
+    - opencv
+    - scikit-image
+
+test:
+  imports:
+    - napari_tomodl
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/napari-tomodl/
+  summary: A plugin for optical projection tomography reconstruction with model-based neural networks.
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
+    - jaimergp
