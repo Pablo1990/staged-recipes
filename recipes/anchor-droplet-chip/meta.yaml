@@ -16,27 +16,26 @@ build:
 
 requirements:
   host:
-    - python >=3.8
     - pip
-  run:
     - python >=3.8
-    - dask-core
+    - setuptools-scm
+  run:
+    - dask
     - fire
-    - imreg_dft
-    - jupyterlab
-    - matplotlib-base
+    - jupyterlab  # ??
+    - matplotlib
     - napari
     - nd2
     - numpy
     - pandas
-    - pyqt6
+    - python >=3.8
     - pyyaml
     - scikit-image
     - scipy
     - seaborn
     - tifffile
     - zarr-tools
-    - zenodo_get
+    - zenodo-get
 
 test:
   imports:
@@ -49,8 +48,8 @@ test:
     - pip
 
 about:
-  home: https://github.com/aaristov/napari-segment
-  summary: Segment organoids and measure intensities
+  home: https://github.com/BaroudLab/anchor-droplet-chip
+  summary: Measuring single-cell susceptibility to antibiotics within monoclonal fluorescent bacteria.
   license: BSD-3-Clause
   license_file: LICENSE
 
