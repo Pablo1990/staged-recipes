@@ -16,10 +16,10 @@ build:
 
 requirements:
   host:
-    - python >=3.8
     - pip
-  run:
     - python >=3.8
+    - setuptools-scm
+  run:
     - anndata
     - click
     - click-log
@@ -28,8 +28,9 @@ requirements:
     - imageio
     - networkx
     - numpy
-    - opencv-python-headless
+    - opencv
     - pandas
+    - python >=3.8
     - scikit-image
     - scipy
     - tifffile
