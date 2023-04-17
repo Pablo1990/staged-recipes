@@ -1,0 +1,55 @@
+{% set name = "steinbock" %}
+{% set version = "0.16.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/steinbock-{{ version }}.tar.gz
+  sha256: f253a29e8981223f6a7af19058572cc0863a0b2a94673018d2a0c433bc188c06
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+  run:
+    - python >=3.8
+    - anndata
+    - click
+    - click-log
+    - fcswrite
+    - h5py
+    - imageio
+    - networkx
+    - numpy
+    - opencv-python-headless
+    - pandas
+    - scikit-image
+    - scipy
+    - tifffile
+    - xtiff
+
+test:
+  imports:
+    - steinbock
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/BodenmillerGroup/steinbock
+  summary: A toolkit for processing multiplexed tissue images
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
