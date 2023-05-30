@@ -1,0 +1,44 @@
+{% set name = "gemspa-spt" %}
+{% set version = "0.0.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gemspa-spt-{{ version }}.tar.gz
+  sha256: c45971d25859a4d2e013f1cedb692b36f3946151f4d492eb5d356fd327442cce
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+  run:
+    - python >=3.8
+    - numpy
+    - pandas
+    - scikit-image
+
+test:
+  imports:
+    - gemspa_spt
+  commands:
+    - pip list
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/gemspa-spt/
+  summary: A package for analysis of single particle tracking experiments
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - goanpeca
