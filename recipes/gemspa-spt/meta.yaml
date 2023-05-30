@@ -16,12 +16,12 @@ build:
 
 requirements:
   host:
-    - python >=3.8
     - pip
-  run:
     - python >=3.8
+  run:
     - numpy
     - pandas
+    - python >=3.8
     - scikit-image
 
 test:
@@ -34,7 +34,7 @@ test:
     - pip
 
 about:
-  home: https://pypi.org/project/gemspa-spt/
+  home: https://github.com/liamholtlab/gemspa-spt
   summary: A package for analysis of single particle tracking experiments
   license: BSD-3-Clause
   license_file: LICENSE
