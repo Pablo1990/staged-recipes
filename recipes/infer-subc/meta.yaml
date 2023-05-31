@@ -36,8 +36,8 @@ test:
   imports:
     - infer_subc
   commands:
-    # - pip list  # Fails due to itk
-    - pip check
+    - pip list
+    # - pip check  # Fails due to itk
     - infer_subc --help
   requires:
     - pip
