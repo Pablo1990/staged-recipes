@@ -18,25 +18,25 @@ build:
 
 requirements:
   host:
+    - pip
     - python >=3.8
     - setuptools-scm
-    - pip
   run:
-    - python >=3.8
-    - napari
     - aicssegmentation
     - aicsimageio
+    - jupyter
+    - napari
     - numpy
+    - pandas
+    - python >=3.8
     - scipy
     - scikit-image
-    - pandas
-    - jupyter
 
 test:
   imports:
     - infer_subc
   commands:
-    - pip list
+    # - pip list  # Fails due to itk
     - pip check
     - infer_subc --help
   requires:
